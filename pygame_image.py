@@ -23,20 +23,28 @@ def main():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed() #キーの押下状態のリストを取得
         if key_lst[pg.K_UP]: #上矢印キーが押されたとき
-            kokaton_rect.move_ip((0, -1)) #横に0、縦に―1移動させる
+            hor = -1
+            ver = -1
+            #kokaton_rect.move_ip((0, -1)) #横に0、縦に―1移動させる
         elif key_lst[pg.K_DOWN]:
-            kokaton_rect.move_ip(0, +1)
+            hor = -1
+            ver = 1
+            #kokaton_rect.move_ip(0, +1)
         elif key_lst[pg.K_RIGHT]:
-            kokaton_rect.move_ip(+1, 0)
+            hor = 2
+            ver = 0 
+            #kokaton_rect.move_ip(+1, 0)
         else:
-            kokaton_rect.move_ip(-1, 0) #演習課題1
+            hor = -2
+            ver = 0
+            #kokaton_rect.move_ip(-1, 0) #演習課題1
         
+        kokaton_rect.move_ip(hor, ver)
 
         x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img2, [-x + 1600, 0])
         screen.blit(bg_img, [-x + 3200, 0])
-        #screen.blit(kokaton_img, [300 -x, 200])
         screen.blit(kokaton_img, kokaton_rect) #画像をrectに従って貼り付け
         pg.display.update()
         tmr += 1
