@@ -20,9 +20,10 @@ def main():
         x = tmr
         screen.blit(bg_img, [-x, 0])
         screen.blit(kokaton_img, [300, 200])
+        screen.blit(bg_img, [1600, 0])
         pg.display.update()
         tmr += 1
-        clock.tick(200)
+        clock.tick(400)
 
 
 if __name__ == "__main__":
