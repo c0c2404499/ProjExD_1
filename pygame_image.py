@@ -10,7 +10,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") #背景画像を挿入
-    bg_img = pg.transform.flip(bg_img, True, False) #反転
+    bg_img2 = pg.transform.flip(bg_img, True, False) #反転
     kokaton_img = pg.image.load("fig/3.png")
     kokaton_img = pg.transform.flip(kokaton_img, True, False)
     
@@ -20,9 +20,11 @@ def main():
             if event.type == pg.QUIT: return
 
         x = tmr
+        x = tmr % 3200
         screen.blit(bg_img, [-x, 0])
+        screen.blit(bg_img2, [-x + 1600, 0])
+        screen.blit(bg_img, [-x + 3200, 0])
         screen.blit(kokaton_img, [300, 200])
-        screen.blit(bg_img, [-x + 1600, 0])
         pg.display.update()
         tmr += 1
         clock.tick(400)
